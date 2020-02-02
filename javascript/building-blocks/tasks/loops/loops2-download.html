@@ -19,16 +19,17 @@
   <body>
 
     <section class="preview">
-
-
-
+      <input type="text">
+      <button> Search </button>
+      <p></p>
     </section>
 
   </body>
   <script>
     let name = 'Mustafa';
-    let i = 0;
-    let para = document.createElement('p');
+    const para = document.querySelector('p');
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
 
     let phonebook = [
       { name : 'Chris', number : '1549' },
@@ -42,6 +43,18 @@
     ]
 
     // Add your code here
+    btn.addEventListener('click', function () {
+    let searchName = input.value.toLowerCase();
+  
+    for (let i = 0; i < phonebook.length; i++) {
+        let splitContact = phonebook[i].name;
+        if (splitContact.toLowerCase() === searchName) {
+            para.textContent = phonebook[i].name + '\'s number is ' + phonebook[i].number + '.';
+            break;
+        } else {
+            para.textContent = 'Contact not found.';
+        }
+      }})
 
     // Don't edit the code below here!
     let section = document.querySelector('section');
